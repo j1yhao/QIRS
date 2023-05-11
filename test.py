@@ -37,22 +37,30 @@ def find_lcseque(s1, s2):
 
 
 if __name__ == '__main__':
-    A = np.load('A_movies_small.npy')
-    m, n = np.shape(A)
-    user = 3
-    r = 450
-    c = 4500
-    rank = 10
-    Nsamples = 10000
-    k = 100
-    for user in range(1, 10):
-        j_index, X = qi.recomm_syst(A, user, r, c, rank, Nsamples, 10)
-        k = 1000
-        a_index = X.argsort()[::-1][0:k]
-        print(X)
-        a2_index = []
-        for j in a_index:
-            a2_index.append(j_index[j])
+    A = np.load('FM_v.npy')
+    print(A)
+    print(len(A))
+    A = np.load('FM_model.npy')
+    print(len(A[1]))
+
+
+# if __name__ == '__main__':
+#     A = np.load('A_movies_small.npy')
+#     m, n = np.shape(A)
+#     user = 3
+#     r = 450
+#     c = 4500
+#     rank = 10
+#     Nsamples = 10000
+#     k = 100
+#     for user in range(1, 10):
+#         j_index, X = qi.recomm_syst(A, user, r, c, rank, Nsamples, 10)
+#         k = 1000
+#         a_index = X.argsort()[::-1][0:k]
+#         print(X)
+#         a2_index = []
+#         for j in a_index:
+#             a2_index.append(j_index[j])
         # print(X)
         # print(j_index)
         # movies_test = np.load('A_movies_small_test.npy')

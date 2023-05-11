@@ -70,7 +70,11 @@ class fm(object):
             for i in range(self.first_col, featureNum):
                 lineArr.append(float(line[i]))
             dataMat.append(lineArr)
-            labelMat.append(float(line[self.first_col-1]) * 2 - 1)
+            if line[self.first_col-1] > 2.5:
+                labelMat.append(1)
+            else:
+                labelMat.append(-1)
+            # labelMat.append(float(line[self.first_col-1]) * 2 - 1)
         return mat(self.min_max(dataMat)), labelMat
 
     def sigmoid(self, inx):
@@ -195,6 +199,8 @@ if __name__ == '__main__':
     A = np.load('FM_model.npy')
     f = fm()
     print(A)
+    # dataMatrix, classLabels = f.loadDataSet("FM_model.npy")
+    # print(classLabels)
     f.fit("FM_model.npy")
     f.save()
 
